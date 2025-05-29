@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SentiWave</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url("/static/background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .content {
+      position: relative;
+      width: 250px;
+      text-align: center;
+    }
+
+    /* Invisible file input */
+    #fileInput {
+      display: none;
+    }
+
+    /* Transparent clickable area over mic */
+    .mic-overlay {
+      position: absolute;
+      top: -100px; /* Adjust this to match mic position */
+      left: 25px; /* Adjust this to match mic position */
+      width: 200px;  /* Set exact width of mic area */
+      height: 200px; /* Set exact height of mic area */
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    input[type="submit"] {
+      margin-top: 200px; /* Place predict button below mic */
+      padding: 10px 25px;
+      border: none;
+      background-color: #020d22;
+      color: #ffffff;
+      border-radius: 8px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #f1f2f4bd;
+      color: #0d0437;
+    }
+
+    .result-box {
+      background-color: rgba(151, 201, 206, 0.951);
+      border-radius: 10px;
+      padding: 5px;
+      margin-top: 35px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #190c52;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Form posts to same page -->
+    <form action="" method="post" enctype="multipart/form-data">
+      <label for="fileInput" class="mic-overlay"></label>
+      <input id="fileInput" type="file" name="audiofile" accept=".wav" required>
+      <input type="submit" value="𝐏𝐑𝐄𝐃𝐈𝐂𝐓">
+    </form>
+
+    <!-- Result display -->
+    {% if result %}
+    <div class="result-box">
+      {{ result }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
